@@ -1,0 +1,13 @@
+- name: Run Hermes unit tests
+  become: yes
+  command:
+    chdir: "{{ eid_hermes_dir.path }}/tests"
+    cmd: ./unit_test -v
+  register: unit_test
+  failed_when: false
+  notify: Cleanup eid-hermes
+
+- name: Unit test results
+  debug:
+    var: unit_test.stderr_lines
+  failed_when: unit_test.rc

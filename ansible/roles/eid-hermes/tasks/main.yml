@@ -1,0 +1,13 @@
+- name: Create temporary directory
+  tempfile:
+    state: directory
+  register: eid_hermes_dir
+
+- name: Download eid-hermes
+  git:
+    repo: https://github.com/Eideticom/eid-hermes
+    depth: 1
+    recursive: no
+    dest: "{{ eid_hermes_dir.path }}"
+    accept_hostkey: true
+    version: "{{ lookup('env', 'HERMES_REF') | default('master', True) }}"

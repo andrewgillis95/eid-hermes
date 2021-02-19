@@ -1,0 +1,4 @@
+- name: Cleanup eid-hermes
+  file:
+    path: "{{ eid_hermes_dir.path }}"
+    state: absent

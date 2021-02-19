@@ -1,0 +1,9 @@
+- name: Compile Hermes examples
+  make:
+    chdir: "{{ eid_hermes_dir.path }}/examples"
+  notify: Cleanup eid-hermes
+
+- name: Run all examples
+  command: "{{ item | regex_replace('\\.c', '') }}"
+  with_fileglob: "{{ eid_hermes_dir.path }}/examples/*.c"
+  changed_when: false

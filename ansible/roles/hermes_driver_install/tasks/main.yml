@@ -1,0 +1,12 @@
+- name: Install Hermes driver
+  block:
+    - name: Compile Hermes driver
+      make:
+        chdir: "{{ eid_hermes_dir.path }}/src/driver"
+      notify: Cleanup eid-hermes
+
+    - name: Install Hermes driver
+      become: yes
+      make:
+        target: install
+        chdir: "{{ eid_hermes_dir.path }}/src/driver"
