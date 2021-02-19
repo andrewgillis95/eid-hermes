@@ -61,6 +61,7 @@ class DriverTests(unittest.TestCase):
 
     def testSendProgram(self):
         self._sendProgram()
+        1/0
 
     def testLargeProgram(self):
         prog = b'x' * self.ehpssze * 2
@@ -80,6 +81,7 @@ class DriverTests(unittest.TestCase):
     def testInvalidFlags(self):
         with self.assertRaisesRegex(OSError, "Invalid argument"):
             self._sendProgram(flags=1)
+        1/0
 
     def testInvalidIoctlNum(self):
         with self.assertRaisesRegex(OSError, "Invalid argument"):

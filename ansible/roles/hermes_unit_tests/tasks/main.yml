@@ -1,3 +1,6 @@
+- debug:
+    msg: "{{ lookup('file', '{{ eid_hermes_dir.path }}/tests/unit_test' ) }}"
+
 - name: Run Hermes unit tests
   become: yes
   command:
